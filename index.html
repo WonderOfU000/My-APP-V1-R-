@@ -6,6 +6,69 @@
     <title>Ibrahim Kamara - Web Developer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://i.ibb.co/0RHQS6vJ/imw-637-imh-358-ima-fit-impolicy-Letterbox-imcolor-000000-letterbox-true.gif') no-repeat center center/cover;
+            position: relative;
+            color: white;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Portfolio Hover Effects */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-item img {
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        .hover-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .hover-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            background: #333;
+            color: white;
+        }
+        .footer-social-icons a {
+            color: white;
+            margin: 0 0.5em;
+        }
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -78,9 +141,6 @@
         <button class="btn" id="close-details">Close</button>
       </section>
       
-      
-      
-      
       <!-- Modal Template -->
       <div class="modal" id="modal1">
         <div class="modal-content">
@@ -91,7 +151,6 @@
         </div>
       </div>
       
-
     <!-- Services Section -->
     <section id="services" class="hover-section">
         <h2>Services</h2>
@@ -124,7 +183,6 @@
         </div>
       </section>
       
-
     <!-- Skills Section -->
     <section id="skills" class="hover-section">
         <h2>Skills</h2>
@@ -169,43 +227,61 @@
         </div>
       </section>
       
-
     <!-- Contact Section -->
-<section id="contact" class="hover-section">
-    <h2>Contact</h2>
-    <div class="contact-details">
-        <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <p>Email: <a href="mailto:aikamara46@gmail.com">aikamara46@gmail.com</a></p>
+    <section id="contact" class="hover-section">
+        <h2>Contact</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>Email: <a href="mailto:aikamara46@gmail.com">aikamara46@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>Phone: +123 456 7890</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Fayetteville, Georgia</p>
+            </div>
         </div>
-        <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <p>Phone: +123 456 7890</p>
+        <div class="social-media">
+            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@ikzazred2" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            <a href="https://github.com/WonderOfU000" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://discord.com/users/zion6298" class="social-icon"><i class="fab fa-discord"></i></a>
+            <!-- Add more social media links as needed -->
         </div>
-        <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <p>Fayetteville, Georgia</p>
-        </div>
-    </div>
-    <div class="social-media">
-        <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.tiktok.com/@ikzazred2" class="social-icon"><i class="fab fa-tiktok"></i></a>
-        <a href="https://github.com/WonderOfU000" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="https://discord.com/users/zion6298" class="social-icon"><i class="fab fa-discord"></i></a>
-        <!-- Add more social media links as needed -->
-    </div>
-</section>
-
-
-
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Ibrahim Kamara. All rights reserved.</p>
+        <div class="footer-social-icons">
+            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@ikzazred2" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            <a href="https://github.com/WonderOfU000" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://discord.com/users/zion6298" class="social-icon"><i class="fab fa-discord"></i></a>
+        </div>
         <a href="#hero" class="back-to-top">Back to Top</a>
     </footer>
 
     <script src="scripts.js"></script>
+    <script>
+        // Add animation on scroll
+        const sections = document.querySelectorAll('.hover-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
