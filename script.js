@@ -1,183 +1,108 @@
-// scripts.js
 
-// Filter Portfolio Items
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.dataset.category;
-    portfolioItems.forEach(item => {
-      if (category === 'all' || item.dataset.category === category) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-});
-
-// Show Project Details
-const projectDetailsSection = document.getElementById('project-details');
-const detailsContent = document.querySelector('.details-content');
-const closeDetailsBtn = document.getElementById('close-details');
-
-document.querySelectorAll('.portfolio-item .btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const project = btn.dataset.project;
-    // Example details for each project (you can customize these)
-    const projectDetails = {
-      project1: {
-        title: 'Type Writer',
-        description: 'Typing detection web application that tracks and displays the user\'s typing speed and accuracy in real-time.',
-        link: '#'
-      },
-      project2: {
-        title: 'Personal Website',
-        description: 'Personal website showcasing my skills with a clean and simple layout.',
-        link: '#'
-      },
-      project3: {
-        title: '2D Game',
-        description: 'A space-themed action game showcasing my skills in game development.',
-        link: '#'
-      }
-    };
-    const details = projectDetails[project];
-    detailsContent.innerHTML = `<h3>${details.title}</h3><p>${details.description}</p><a href="${details.link}" class="btn">View Live</a>`;
-    projectDetailsSection.style.display = 'block';
-  });
-});
-
-// Close Project Details
-closeDetailsBtn.addEventListener('click', () => {
-  projectDetailsSection.style.display = 'none';
-});
-
-// Smooth Scroll for Service Buttons
-document.querySelectorAll('.service-item .btn').forEach(button => {
-  button.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Scroll Animation
-const portfolioItemsScroll = document.querySelectorAll('.portfolio-item');
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  portfolioItemsScroll.forEach(item => {
-    item.classList.add('fade-in');
-    observer.observe(item);
-  });
-}
-
-
-// Back to Top
-const backToTop = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 100) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
-
-
-
-// Modal Functionality
-const modalBtns = document.querySelectorAll('.portfolio-item .btn');
-const modals = document.querySelectorAll('.modal');
-const closeBtns = document.querySelectorAll('.close-btn');
-
-modalBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const modalId = btn.dataset.modal;
-    document.getElementById(modalId).style.display = 'flex';
-  });
-});
-
-closeBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.closest('.modal').style.display = 'none';
-  });
-});
-
-window.addEventListener('click', (e) => {
-  if (e.target.classList.contains('modal')) {
-    e.target.style.display = 'none';
-  }
-});
-
-
-// Fade-in effect
-const sections = document.querySelectorAll('section');
-const options = {
-    threshold: 0.1
-};
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, options);
-
-sections.forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
-
-// Animated skill bars
 document.addEventListener('DOMContentLoaded', () => {
-    const skillBars = document.querySelectorAll('.skill-bar-inner');
-    skillBars.forEach(bar => {
-      const width = bar.closest('.skill-item').dataset.skillLevel;
-      bar.style.width = `${width}%`;
-    });
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
   });
-  
 
-// Accessibility Enhancements
-document.querySelectorAll('a').forEach(anchor => {
-    anchor.setAttribute('tabindex', '0');
-    anchor.setAttribute('role', 'link');
-});
-
-// Smooth Scroll for Service Buttons
-document.querySelectorAll('.service-item .btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+  // Smooth scroll for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+              inline: 'nearest'
+          });
       });
-    });
   });
-  
 
-// Contact Form Validation (Example)
-const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Example validation logic
-    const name = contactForm.querySelector('input[name="name"]').value;
-    const email = contactForm.querySelector('input[name="email"]').value;
-    const message = contactForm.querySelector('textarea[name="message"]').value;
-    if (name && email && message) {
-        alert('Message sent successfully!');
-        contactForm.reset();
-    } else {
-        alert('Please fill in all fields.');
-    }
+  // Form validation
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Simple form validation
+      const name = form.querySelector('input[placeholder="Your Name"]').value;
+      const email = form.querySelector('input[placeholder="Your Email"]').value;
+      const message = form.querySelector('textarea[placeholder="Your Message"]').value;
+
+      if (name && email && message) {
+          alert('Messaging feature is not available yet yet');
+          form.reset();
+      } else {
+          alert('Please fill in all fields.');
+      }
+  });
+
+  // IntersectionObserver for fade-in effect
+  const observerOptions = {
+      threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('fade-in-visible');
+              observer.unobserve(entry.target);
+          }
+      });
+  }, observerOptions);
+
+  document.querySelectorAll('section').forEach(section => {
+      section.classList.add('fade-in');
+      observer.observe(section);
+  });
+
+  // Text scramble effect
+  const scrambleText = (element) => {
+      const chars = '!<>-_\\/[]{}—=+*^?#________';
+      const text = element.innerText;
+      let newText = '';
+      let i = 0;
+
+      const interval = setInterval(() => {
+          if (i < text.length) {
+              newText += chars[Math.floor(Math.random() * chars.length)];
+              element.innerText = newText;
+              i++;
+          } else {
+              clearInterval(interval);
+              element.innerText = text;
+          }
+      }, 50);
+  };
+
+  document.querySelectorAll('.scramble-text').forEach(element => {
+      scrambleText(element);
+  });
+
+  // Dark/Light mode toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+  });
+
+  // Parallax scrolling effect
+  window.addEventListener('scroll', () => {
+      const parallax = document.querySelector('.parallax');
+      let scrollPosition = window.pageYOffset;
+      parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+  });
+
+  // Animate skill bars
+  const skillBars = document.querySelectorAll('.skill-bar .skill-level');
+  skillBars.forEach(skillBar => {
+      const width = skillBar.style.width;
+      skillBar.style.width = '0';
+      skillBar.style.transition = 'width 1s ease-in-out';
+      observer.observe(skillBar);
+      skillBar.addEventListener('transitionend', () => {
+          skillBar.style.width = width;
+      });
+  });
 });
+
+
+ 

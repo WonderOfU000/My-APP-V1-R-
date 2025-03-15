@@ -3,285 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Kamara - Web Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Hero Section */
-        #hero {
-            background: url('https://i.ibb.co/0RHQS6vJ/imw-637-imh-358-ima-fit-impolicy-Letterbox-imcolor-000000-letterbox-true.gif') no-repeat center center/cover;
-            position: relative;
-            color: white;
-        }
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Portfolio Hover Effects */
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-        }
-        .portfolio-item img {
-            transition: transform 0.3s ease;
-        }
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Animations */
-        .hover-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .hover-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Footer */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1em;
-            background: #333;
-            color: white;
-        }
-        .footer-social-icons a {
-            color: white;
-            margin: 0 0.5em;
-        }
-    </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header id="hero" class="hover-section">
-        <div class="hero-content">
-            <h1>Ibrahim Kamara</h1>
-            <p>Web Developer & Designer</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
+    <header>
+        <nav>
+            <div class="logo">My Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
     </header>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-          <li class="active"><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      
-    <!-- About Section -->
-    <section id="about" class="hover-section">
+    <section id="hero">
+        <h1 class="scramble-text">Welcome to My Portfolio</h1>
+        <p>I build modern web applications with cutting-edge technologies</p>
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </section>
+
+    <section id="about">
         <h2>About Me</h2>
-        <div class="about-content">
-            <img src="https://t4.ftcdn.net/jpg/00/97/00/09/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" alt="Ibrahim Kamara">
-            <p>Hey there! I'm Ibrahim, a passionate web developer and designer. I love creating cool websites and learning new things about coding. Whether it's building interactive web pages or designing eye-catching layouts, I’m always up for a challenge. Check out some of my work and feel free to reach out if you want to collaborate or just chat about tech!</p>
-            <ul class="about-icons">
-                <li><i class="fas fa-code"></i> Web Development</li>
-                <li><i class="fas fa-paint-brush"></i> Design</li>
-                <li><i class="fas fa-laptop-code"></i> Programming</li>
-                <!-- Add more icons as needed -->
-            </ul>
+        <p>Hey there! I'm Ibrahim, a passionate web developer and designer. I love creating cool websites and learning new things about coding. Whether it's building interactive web pages or designing eye-catching layouts, I’m always up for a challenge. Check out some of my work and feel free to reach out if you want to collaborate or just chat about tech!</p>
+        <div class="skills">
+            <div class="card">
+                <h3>Frontend Development</h3>
+                <p>Building responsive and interactive user interfaces.</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>UI/UX Design</h3>
+                <p>Designing user-friendly and visually appealing layouts.</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Backend Integration</h3>
+                <p>Connecting frontend with robust backend services.</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 70%;"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="hover-section">
-        <h2>Portfolio</h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-item" data-project="project1">
-            <img src="https://i.ibb.co/g51CwMK/Screenshot-2025-03-03-174352.png" alt="Project 1">
-            <h3>Type Writer</h3>
-            <p>Typing detection web application that tracks and displays the user's typing speed and accuracy in real-time.</p>
-            <button class="btn" data-project="project1">View Details</button>
-          </div>
-          <div class="portfolio-item" data-project="project2">
-            <img src="https://i.ibb.co/8njHKBy6/Screenshot-2025-03-03-174825.png" alt="Project 2">
-            <h3>Personal Website</h3>
-            <p>Personal website showcasing my skills with a clean and simple layout.</p>
-            <button class="btn" data-project="project2">View Details</button>
-          </div>
-          <div class="portfolio-item" data-project="project3">
-            <img src="https://i.ibb.co/CsmpGZv6/Screenshot-2025-03-03-175257.png" alt="Project 3">
-            <h3>2D Game</h3>
-            <p>A space-themed action game showcasing my skills in game development.</p>
-            <button class="btn" data-project="project3">View Details</button>
-          </div>
-          <!-- Add more portfolio items as needed -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Check out some of my recent work</p>
+        <div class="project-cards">
+            <div class="project-card">
+                <img src="https://i.ibb.co/g51CwMK/Screenshot-2025-03-03-174352.png" alt="Project Image">
+                <h3>Type Writer</h3>
+                <p>Typing detection web application that tracks and displays the user's typing speed and accuracy in real-time.</p>
+                <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+            <div class="project-card">
+                <img src="https://i.ibb.co/8njHKBy6/Screenshot-2025-03-03-174825.png" alt="Project Image">
+                <h3>Personal Website</h3>
+                <p>Personal website showcasing my skills with a clean and simple layout.</p>
+                <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+            <div class="project-card">
+                <img src="https://i.ibb.co/CsmpGZv6/Screenshot-2025-03-03-175257.png" alt="Project Image">
+                <h3>2D Game</h3>
+                <p>A space-themed action game showcasing my skills in game development.</p>
+                <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+            <!-- Add more project cards as needed -->
         </div>
-      </section>
-      
-      <!-- Project Details Section -->
-      <section id="project-details" class="hover-section" style="display: none;">
-        <h2>Project Details</h2>
-        <div class="details-content">
-          <!-- Details will be dynamically inserted here -->
+        <a href="projects.html" class="btn btn-primary">Explore</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Interested in working together? Let's connect!</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email: <a href="mailto:aikamara46@gmail.com">aikamara46@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>Phone: +123 456 7890</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Fayetteville, Georgia</p>
+                </div>
+            </div>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
         </div>
-        <button class="btn" id="close-details">Close</button>
-      </section>
-      
-      <!-- Modal Template -->
-      <div class="modal" id="modal1">
-        <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h3>Type Writer</h3>
-          <p>Detailed information about the project...</p>
-          <a href="https://example.com" class="btn">View Live</a>
-        </div>
-      </div>
-      
-    <!-- Services Section -->
-    <section id="services" class="hover-section">
-        <h2>Services</h2>
-        <div class="services-content">
-          <div class="service-item">
-            <i class="fas fa-desktop"></i>
-            <h3>Web Design</h3>
-            <p>Creating visually appealing and user-friendly web designs that captivate your audience.</p>
-            <a href="#contact" class="btn">Get Started</a>
-          </div>
-          <div class="service-item">
-            <i class="fas fa-code"></i>
-            <h3>Web Development</h3>
-            <p>Building robust and scalable web applications tailored to your business needs.</p>
-            <a href="#contact" class="btn">Get Started</a>
-          </div>
-          <div class="service-item">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>Responsive Design</h3>
-            <p>Ensuring your website looks great on all devices, from desktops to smartphones.</p>
-            <a href="#contact" class="btn">Get Started</a>
-          </div>
-          <div class="service-item">
-            <i class="fas fa-search"></i>
-            <h3>SEO Optimization</h3>
-            <p>Improving your website's visibility on search engines to attract more visitors.</p>
-            <a href="#contact" class="btn">Get Started</a>
-          </div>
-          <!-- Add more services as needed -->
-        </div>
-      </section>
-      
-    <!-- Skills Section -->
-    <section id="skills" class="hover-section">
-        <h2>Skills</h2>
-        <div class="skills-content">
-          <div class="skill-item" data-skill-level="90">
-            <div class="skill-title">
-              <p>HTML</p>
-              <span>90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-inner"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-skill-level="85">
-            <div class="skill-title">
-              <p>CSS</p>
-              <span>85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-inner"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-skill-level="80">
-            <div class="skill-title">
-              <p>JavaScript</p>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-inner"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-skill-level="75">
-            <div class="skill-title">
-              <p>Python</p>
-              <span>75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-inner"></div>
-            </div>
-          </div>
-          <!-- Add more skill items as needed -->
-        </div>
-      </section>
-      
-    <!-- Contact Section -->
-    <section id="contact" class="hover-section">
-        <h2>Contact</h2>
-        <div class="contact-details">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p>Email: <a href="mailto:aikamara46@gmail.com">aikamara46@gmail.com</a></p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <p>Phone: +123 456 7890</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p>Fayetteville, Georgia</p>
-            </div>
-        </div>
-        <div class="social-media">
-            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.tiktok.com/@ikzazred2" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            <a href="https://github.com/WonderOfU000" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://discord.com/users/zion6298" class="social-icon"><i class="fab fa-discord"></i></a>
-            <!-- Add more social media links as needed -->
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@ikzazred2" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://github.com/WonderOfU000" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://discord.com/users/zion6298" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Ibrahim Kamara. All rights reserved.</p>
-        <div class="footer-social-icons">
-            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.tiktok.com/@ikzazred2" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            <a href="https://github.com/WonderOfU000" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://discord.com/users/zion6298" class="social-icon"><i class="fab fa-discord"></i></a>
-        </div>
-        <a href="#hero" class="back-to-top">Back to Top</a>
     </footer>
 
-    <script src="scripts.js"></script>
-    <script>
-        // Add animation on scroll
-        const sections = document.querySelectorAll('.hover-section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
+
